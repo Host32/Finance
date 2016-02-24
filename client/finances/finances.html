@@ -179,5 +179,27 @@
         </tbody>
       </table>
     </div> <!-- end panel despesas adicionais -->
+
+    <!-- panel Balance -->
+    <div class="panel panel-primary">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+        Balance
+      </div>
+        
+      <!-- Table -->
+      <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                {{#each months}}
+                    <th class="{{activeClass}}">{{name}} - {{year}}</th> 
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div> <!-- end panel Balance -->
     
 </template>
