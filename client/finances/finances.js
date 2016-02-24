@@ -1,8 +1,9 @@
 var BEFORE_MONTHS_QTDE = 2;
 var AFTER_MONTHS_QTDE = 3;
+var CURRENT_MONTH_ADJUST = 0;
 
 function iterateUsableMonths(callback) {
-    var currentMonthIndex = Months.getCurrentIndex();
+    var currentMonthIndex = Months.getCurrentIndex() + CURRENT_MONTH_ADJUST;
     for(var i = -BEFORE_MONTHS_QTDE; i <= AFTER_MONTHS_QTDE; i++){
         var index = currentMonthIndex + i;
         var currentYear = Years.getCurrent();
@@ -56,8 +57,11 @@ function organizeRecordsToView(records){
 }
 
 Template.finances.helpers({
+    lastUpdate: function () {
+      return Session.get('lastUpdate');
+    },
     activeClass: function () {
-        return Months.getCurrent().name === this.name ? 'active' : '';
+        return Months.getCurrent().name === this.name && Years.getCurrent() === this.year ? 'active' : '';
     },
     getAmount: function (record) {
         var month = this;
@@ -103,5 +107,16 @@ Template.finances.helpers({
     },
     additionalExpenses: function (param) {
         return organizeRecordsToView(MoneyRecords.find({type: "expense", expenseType: "additional", date: {$in: getDateFilter()}}));
+    }
+});
+
+Template.finances.events({
+    "click .previous": function(e, context){
+        e.preventDefault();
+        CURRENT_MONTH_ADJUST -= 1; 
+    },
+    "click .next": function(e, context){
+        e.preventDefault();
+        CURRENT_MONTH_ADJUST += 1;
     }
 });
