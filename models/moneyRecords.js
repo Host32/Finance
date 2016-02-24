@@ -1,0 +1,1 @@
+MoneyRecords = new Mongo.Collection('moneyRecords');

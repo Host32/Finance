@@ -16,29 +16,26 @@
 						</div>
 
 						<div class="form-group">
+							<label for="amount">Amount:</label>
+							<input type="number" name="amount" class="form-control" />
+						</div>
+
+						<div class="form-group">
 							<label for="month">Month:</label>
 							<div class="row">
 								<div class="col col-md-8">
 									<select name="month" class="form-control">
-										<option value="janeiro">Janeiro</option>
-										<option value="fevereiro">Feveriero</option>
-										<option value="fevereiro">Feveriero</option>
-										<option value="fevereiro">Feveriero</option>
-										<option value="fevereiro">Feveriero</option>
-										<option value="fevereiro">Feveriero</option>
-										<option value="fevereiro">Feveriero</option>
-										<option value="fevereiro">Feveriero</option>
-										<option value="fevereiro">Feveriero</option>
-										<option value="fevereiro">Feveriero</option>
-										<option value="fevereiro">Feveriero</option>
-										<option value="fevereiro">Feveriero</option>
+										{{#each months}}
+											<option value="{{toLowerCase name}}">{{name}}</option>
+										{{/each}}
 									</select>
 								</div>
 
 								<div class="col col-md-4">
 									<select name="year" class="form-control">
-										<option value="2015">2015</option>
-										<option value="2016">2016</option>
+										{{#each years}}
+											<option value="{{year}}">{{year}}</option>
+										{{/each}}
 									</select>
 								</div>
 							</div>
@@ -53,7 +50,7 @@
 							</select>
 						</div>
 
-						<div class="form-group">
+						<div id="expense-type-group" class="form-group hide">
 							<label for="expenseType">Expense type:</label>
 							<select name="expenseType" class="form-control">
 								<option value="fixed">Fixed expense</option>
@@ -63,21 +60,20 @@
 							</select>
 						</div>
 
-						<div class="form-group">
-							<label for="group">Group:</label>
-							<select name="group" class="form-control">
+						<div id="category-group" class="form-group hide">
+							<label for="category">Category:</label>
+							<select name="category" class="form-control">
 								<option value="housing">Housing</option>
 								<option value="transport">Transport</option>
 								<option value="health">Health</option>
-							</select>
-						</div>
-
-						<div class="form-group">
-							<label for="subgroup">Subgroup:</label>
-							<select name="subgroup" class="form-control">
-								<option value="housing">Housing</option>
-								<option value="transport">Transport</option>
-								<option value="health">Health</option>
+								<option value="education">Education</option>
+								<option value="taxes">Taxes</option>
+								<option value="alimentation">Alimentation</option>
+								<option value="personalCare">Personal care</option>
+								<option value="maintenance">Maintenance / Prevention</option>
+								<option value="recreation">Recreation</option>
+								<option value="clothing">Clothing</option>
+								<option value="other">Other</option>
 							</select>
 						</div>
 
@@ -85,7 +81,7 @@
 					
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save</button>
+						<button type="submit" class="btn btn-primary">Save</button>
 					</div>
 				</div><!-- /.modal-content -->
 			</form>
