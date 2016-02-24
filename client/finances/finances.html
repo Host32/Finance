@@ -1,0 +1,75 @@
+<template name="finances">
+    
+    <!-- panel receitas -->
+    <div class="panel panel-success">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+        Receitas
+      </div>
+        
+      <!-- Table -->
+      <table class="table">
+        <thead>
+            <tr>
+                <th>Categoria</th>
+                <th>Dezembro</th>
+                <th>Janeiro</th>
+                <th class="active">Fevereiro</th>
+                <th>Março</th>
+                <th>Abril</th>
+                <th>Maio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each  receitas}}
+                <tr>
+                    <td>{{categoria}}</td>
+                    <td>R$ {{dezembro}}</td>
+                    <td>R$ {{janeiro}}</td>
+                    <td class="active">R$ {{fevereiro}}</td>
+                    <td>R$ {{marco}}</td>
+                    <td>R$ {{abril}}</td>
+                    <td>R$ {{maio}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+      </table>
+    </div> <!-- end panel receitas -->
+    
+    <!-- panel despesas fixas -->
+    <div class="panel panel-primary">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+        Despesas fixas
+      </div>
+        
+      <!-- Table -->
+      <table class="table">
+        <thead>
+            <tr>
+                <th>Categoria</th>
+                <th>Dezembro</th>
+                <th>Janeiro</th>
+                <th class="active">Fevereiro</th>
+                <th>Março</th>
+                <th>Abril</th>
+                <th>Maio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each  despesasFixas}}
+                <tr>
+                    <td>{{categoria}}</td>
+                    <td>R$ {{dezembro}}</td>
+                    <td>R$ {{janeiro}}</td>
+                    <td class="active">R$ {{fevereiro}}</td>
+                    <td>R$ {{marco}}</td>
+                    <td>R$ {{abril}}</td>
+                    <td>R$ {{maio}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+      </table>
+    </div> <!-- end panel despesas fixas -->
+    
+</template>
