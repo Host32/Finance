@@ -1,46 +1,40 @@
 <template name="moneyRecord">
 	<div id="new-record-modal" class="modal fade" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
-
 			<form>
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<h4 class="modal-title">Create a new money record</h4>
 					</div>
-
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="description">Description:</label>
 							<input type="text" name="description" class="form-control" />
 						</div>
-
 						<div class="form-group">
 							<label for="amount">Amount:</label>
 							<input type="number" name="amount" class="form-control" />
 						</div>
-
 						<div class="form-group">
 							<label for="month">Month:</label>
 							<div class="row">
 								<div class="col col-md-8">
 									<select name="month" class="form-control">
 										{{#each months}}
-											<option value="{{toLowerCase name}}">{{name}}</option>
+										<option value="{{toLowerCase name}}">{{name}}</option>
 										{{/each}}
 									</select>
 								</div>
-
 								<div class="col col-md-4">
 									<select name="year" class="form-control">
 										{{#each years}}
-											<option value="{{year}}">{{year}}</option>
+										<option value="{{year}}">{{year}}</option>
 										{{/each}}
 									</select>
 								</div>
 							</div>
 						</div>
-
 						<div class="form-group">
 							<label for="type">Type:</label>
 							<select name="type" class="form-control">
@@ -49,7 +43,6 @@
 								<option value="expense">Expense</option>
 							</select>
 						</div>
-
 						<div id="expense-type-group" class="form-group hide">
 							<label for="expenseType">Expense type:</label>
 							<select name="expenseType" class="form-control">
@@ -59,7 +52,6 @@
 								<option value="additional">Additional expense</option>
 							</select>
 						</div>
-
 						<div id="category-group" class="form-group hide">
 							<label for="category">Category:</label>
 							<select name="category" class="form-control">
@@ -76,7 +68,6 @@
 								<option value="other">Other</option>
 							</select>
 						</div>
-
 					</div>
 					
 					<div class="modal-footer">
@@ -87,5 +78,4 @@
 			</form>
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
-
-</template>	
+</template>

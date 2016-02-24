@@ -1,219 +1,34 @@
 <template name="finances">
+  {{> monthPagination}}
+
+  {{> recordPanel class="success" head="Revenues" records=revenues}}
+  {{> recordPanel class="info" head="Investments" records=investments}}
+  {{> recordPanel class="default" head="Fixed expenses" records=fixedExpenses}}
+  {{> recordPanel class="warning" head="Variable expenses" records=variableExpenses}}
+  {{> recordPanel class="danger" head="Extra expenses" records=extraExpenses}}
+  {{> recordPanel class="danger" head="Additional expenses" records=additionalExpenses}}
+  
+  <!-- panel Balance -->
+  <div class="panel panel-primary">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+      Balance
+    </div>
     
-    <nav>
-      <ul class="pager">
-        <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span></a></li>
-        <li class="next"><a href="#"><span aria-hidden="true">&rarr;</span></a></li>
-      </ul>
-    </nav>
-
-    <!-- panel receitas -->
-    <div class="panel panel-success">
-      <!-- Default panel contents -->
-      <div class="panel-heading">
-        Revenues
-      </div>
-        
-      <!-- Table -->
-      <table class="table">
-        <thead>
-            <tr>
-                <th>Description</th>
-                {{#each months}}
-                    <th class="{{activeClass}}">{{name}} - {{year}}</th> 
-                {{/each}}
-            </tr>
-        </thead>
-        <tbody>
-            {{#each revenues}}
-                <tr>
-                    <td>{{description}}</td>
-                    {{#each months}}
-                        <td class="{{activeClass}}">{{getAmount ..}}</td>
-                    {{/each}}
-                </tr>
-            {{/each}}
-        </tbody>
-      </table>
-    </div> <!-- end panel receitas -->
-    
-    <!-- panel Investiments -->
-    <div class="panel panel-info">
-      <!-- Default panel contents -->
-      <div class="panel-heading">
-        Investments
-      </div>
-        
-      <!-- Table -->
-      <table class="table">
-        <thead>
-            <tr>
-                <th>Description</th>
-                {{#each months}}
-                    <th class="{{activeClass}}">{{name}} - {{year}}</th> 
-                {{/each}}
-            </tr>
-        </thead>
-        <tbody>
-            {{#each investments}}
-                <tr>
-                    <td>{{description}}</td>
-                    {{#each months}}
-                        <td class="{{activeClass}}">{{getAmount ..}}</td>
-                    {{/each}}
-                </tr>
-            {{/each}}
-        </tbody>
-      </table>
-    </div> <!-- end panel Investiments -->
-
-    <!-- panel despesas fixas -->
-    <div class="panel panel-default">
-      <!-- Default panel contents -->
-      <div class="panel-heading">
-        Fixed expenses
-      </div>
-        
-      <!-- Table -->
-      <table class="table">
-        <thead>
-            <tr>
-                <th>Description</th>
-                {{#each months}}
-                    <th class="{{activeClass}}">{{name}} - {{year}}</th> 
-                {{/each}}
-            </tr>
-        </thead>
-        <tbody>
-            {{#each fixedExpenses}}
-                <tr>
-                    <td>{{description}}</td>
-                    {{#each months}}
-                        <td class="{{activeClass}}">{{getAmount ..}}</td>
-                    {{/each}}
-                </tr>
-            {{/each}}
-        </tbody>
-      </table>
-    </div> <!-- end panel despesas fixas -->
-
-    <!-- panel despesas variaveis -->
-    <div class="panel panel-warning">
-      <!-- Default panel contents -->
-      <div class="panel-heading">
-        Variable expenses
-      </div>
-        
-      <!-- Table -->
-      <table class="table">
-        <thead>
-            <tr>
-                <th>Description</th>
-                {{#each months}}
-                    <th class="{{activeClass}}">{{name}} - {{year}}</th> 
-                {{/each}}
-            </tr>
-        </thead>
-        <tbody>
-            {{#each variableExpenses}}
-                <tr>
-                    <td>{{description}}</td>
-                    {{#each months}}
-                        <td class="{{activeClass}}">{{getAmount ..}}</td>
-                    {{/each}}
-                </tr>
-            {{/each}}
-        </tbody>
-      </table>
-    </div> <!-- end panel despesas variaveis -->
-
-    <!-- panel despesas extras -->
-    <div class="panel panel-danger">
-      <!-- Default panel contents -->
-      <div class="panel-heading">
-        Extra expenses
-      </div>
-        
-      <!-- Table -->
-      <table class="table">
-        <thead>
-            <tr>
-                <th>Description</th>
-                {{#each months}}
-                    <th class="{{activeClass}}">{{name}} - {{year}}</th> 
-                {{/each}}
-            </tr>
-        </thead>
-        <tbody>
-            {{#each extraExpenses}}
-                <tr>
-                    <td>{{description}}</td>
-                    {{#each months}}
-                        <td class="{{activeClass}}">{{getAmount ..}}</td>
-                    {{/each}}
-                </tr>
-            {{/each}}
-        </tbody>
-      </table>
-    </div> <!-- end panel despesas extras -->
-
-    <!-- panel despesas adicionais -->
-    <div class="panel panel-danger">
-      <!-- Default panel contents -->
-      <div class="panel-heading">
-        Additional expenses
-      </div>
-        
-      <!-- Table -->
-      <table class="table">
-        <thead>
-            <tr>
-                <th>Description</th>
-                {{#each months}}
-                    <th class="{{activeClass}}">{{name}} - {{year}}</th> 
-                {{/each}}
-            </tr>
-        </thead>
-        <tbody>
-            {{#each additionalExpenses}}
-                <tr>
-                    <td>{{description}}</td>
-                    {{#each months}}
-                        <td class="{{activeClass}}">{{getAmount ..}}</td>
-                    {{/each}}
-                </tr>
-            {{/each}}
-        </tbody>
-      </table>
-    </div> <!-- end panel despesas adicionais -->
-
-    <!-- panel Balance -->
-    <div class="panel panel-primary">
-      <!-- Default panel contents -->
-      <div class="panel-heading">
-        Balance
-      </div>
-        
-      <!-- Table -->
-      <table class="table">
-        <thead>
-            <tr>
-                <th>Description</th>
-                {{#each months}}
-                    <th class="{{activeClass}}">{{name}} - {{year}}</th> 
-                {{/each}}
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-    </div> <!-- end panel Balance -->
-    
-    <nav>
-      <ul class="pager">
-        <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span></a></li>
-        <li class="next"><a href="#"><span aria-hidden="true">&rarr;</span></a></li>
-      </ul>
-    </nav>
-
+    <!-- Table -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Description</th>
+          {{#each months}}
+          <th class="{{activeClass}}">{{name}} - {{year}}</th>
+          {{/each}}
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div> <!-- end panel Balance -->
+  
+  {{> monthPagination}}
 </template>
