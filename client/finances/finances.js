@@ -29,57 +29,51 @@ function organizeRecordsToView(records) {
   return viewRecords;
 }
 
+function findRecords(filter) {
+  filter.date = {
+    $in: getDateFilter()
+  };
+
+  return organizeRecordsToView(MoneyRecords.find(filter, {
+    sort: {
+      description: 1
+    }
+  }));
+}
+
 Template.finances.helpers({
   revenues: function() {
-    return organizeRecordsToView(MoneyRecords.find({
-      type: "revenue",
-      date: {
-        $in: getDateFilter()
-      }
-    }));
+    return findRecords({
+      type: "revenue"
+    });
   },
   investments: function() {
-    return organizeRecordsToView(MoneyRecords.find({
-      type: "investment",
-      date: {
-        $in: getDateFilter()
-      }
-    }));
+    return findRecords({
+      type: "investment"
+    });
   },
   fixedExpenses: function(param) {
-    return organizeRecordsToView(MoneyRecords.find({
+    return findRecords({
       type: "expense",
-      expenseType: "fixed",
-      date: {
-        $in: getDateFilter()
-      }
-    }));
+      expenseType: "fixed"
+    });
   },
   variableExpenses: function(param) {
-    return organizeRecordsToView(MoneyRecords.find({
+    return findRecords({
       type: "expense",
-      expenseType: "variable",
-      date: {
-        $in: getDateFilter()
-      }
-    }));
+      expenseType: "variable"
+    });
   },
   extraExpenses: function(param) {
-    return organizeRecordsToView(MoneyRecords.find({
+    return findRecords({
       type: "expense",
-      expenseType: "extra",
-      date: {
-        $in: getDateFilter()
-      }
-    }));
+      expenseType: "extra"
+    });
   },
   additionalExpenses: function(param) {
-    return organizeRecordsToView(MoneyRecords.find({
+    return findRecords({
       type: "expense",
-      expenseType: "additional",
-      date: {
-        $in: getDateFilter()
-      }
-    }));
+      expenseType: "additional"
+    });
   }
 });
