@@ -1,0 +1,30 @@
+<template name="recordPanel">
+  <div class="panel panel-{{class}}">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+      {{head}}
+    </div>
+    
+    <!-- Table -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Description</th>
+          {{#each months}}
+            <th class="{{activeClass}}">{{name}} - {{year}}</th>
+          {{/each}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each records}}
+          <tr>
+            <td>{{description}}</td>
+            {{#each months}}
+              <td class="{{activeClass}}">{{getAmount ..}}</td>
+            {{/each}}
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>
