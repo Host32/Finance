@@ -9,6 +9,12 @@ Template.moneyRecord.helpers({
   },
   toLowerCase: function(str) {
     return str.toLowerCase();
+  },
+  moneyFormat: function(amount){
+    return moneyFormat(amount);
+  },
+  recordsToShow: function(){
+    return recordsToShow.get();
   }
 });
 
@@ -39,5 +45,16 @@ Template.moneyRecord.events({
 
     Meteor.call("addRecord", record);
     $('.close').click();
+  },
+  'click .removeButton': function(){
+    var recordId = this._id;
+
+    Meteor.call("removeRecord", recordId);
+
+    var records = _.reject(recordsToShow.get(), function(record){
+      return record._id == recordId;
+    });
+
+    recordsToShow.set(records);
   }
 });

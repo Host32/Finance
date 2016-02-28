@@ -4,15 +4,15 @@ Template.recordPanel.helpers({
   },
   getAmount: function(record) {
     var month = this;
-    var recordInMonth = _.filter(record.months, function(monthRecord) {
+    var recordsInMonth = _.filter(record.months, function(monthRecord) {
       return monthRecord.date.month === month.name.toLowerCase() && monthRecord.date.year === month.year;
     });
 
-    if (!recordInMonth.length) {
+    if (!recordsInMonth.length) {
       return moneyFormat(0);
     }
 
-    var amount = _.reduce(recordInMonth, function(memo, record) {
+    var amount = _.reduce(recordsInMonth, function(memo, record) {
       return memo + record.amount;
     }, 0);
 
@@ -29,6 +29,28 @@ Template.recordPanel.helpers({
 
     return months;
   },
+  stringify: function(obj){
+    return JSON.stringify(obj);
+  }
+});
+
+Template.recordPanel.events({
+  "click .editButton": function (event, context){
+    var month = this;
+    var recordDescription = $(event.currentTarget).data('description');
+
+    var record = _.findWhere(context.data.records, {
+      description: recordDescription
+    });
+
+    var recordsInMonth = _.filter(record.months, function(monthRecord) {
+      return monthRecord.date.month === month.name.toLowerCase() && monthRecord.date.year === month.year;
+    });
+
+    recordsToShow.set(recordsInMonth);
+
+    $('#show-records-modal').modal();
+  }
 });
 
 Template.recordPanel.onRendered(function() {

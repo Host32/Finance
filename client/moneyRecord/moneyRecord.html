@@ -62,4 +62,41 @@
 			</form>
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
+
+	<div id="show-records-modal" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<form>
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Showing money records</h4>
+					</div>
+					<div class="modal-body">
+						<table class="table">
+				      <thead>
+				        <tr>
+				          <th>Description</th>
+				          <th>Date</th>
+				          <th>Type</th>
+				          <th>Amount</th>
+				          <th></th>
+				        </tr>
+				      </thead>
+				      <tbody>
+				      	{{#each recordsToShow}}
+				      		<tr>
+				      			<td>{{description}}</td>
+				      			<td>{{date.month}} - {{date.year}}</td>
+				      			<td>{{type}}</td>
+				      			<td>{{moneyFormat amount}}</td>
+				      			<td><a class="removeButton" href="#"><span class="glyphicon glyphicon-remove"></span></a></td>
+				      		</tr>
+				      	{{/each}}
+				      </tbody>
+			      </table>
+					</div>
+				</div><!-- /.modal-content -->
+			</form>
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 </template>
