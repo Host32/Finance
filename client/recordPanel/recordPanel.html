@@ -24,13 +24,38 @@
             {{#each months}}
               <td class="{{activeClass}}">
                 {{getAmount ..}}
-                {{#if ../../editButton}}
-                  <a class="editButton" href="#" data-description="{{../description}}"><span class="glyphicon glyphicon-new-window"></span></a>
-                {{/if}}
+                <a class="editButton" href="#" data-description="{{../description}}"><span class="glyphicon glyphicon-new-window"></span></a>
               </td>
             {{/each}}
           </tr>
         {{/each}}
+
+        {{#each balance}}
+          <tr>
+            <td>
+              {{capitalize description}}
+            </td>
+            {{#each months}}
+              <td class="{{activeClass}}">
+                {{getAmount ..}}
+              </td>
+            {{/each}}
+          </tr>
+        {{/each}}
+
+        {{#if balance}}
+          <tr>
+            <td>
+              Total
+            </td>
+            {{#each months}}
+              <td class="{{activeClass}}">
+                {{{getBalance ../balance}}}
+              </td>
+            {{/each}}
+          </tr>
+        {{/if}}
+
       </tbody>
     </table>
   </div>
