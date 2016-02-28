@@ -22,14 +22,14 @@
 								<div class="col col-md-8">
 									<select name="month" class="form-control">
 										{{#each months}}
-										<option value="{{toLowerCase name}}">{{name}}</option>
+											<option value="{{toLowerCase name}}">{{name}}</option>
 										{{/each}}
 									</select>
 								</div>
 								<div class="col col-md-4">
 									<select name="year" class="form-control">
 										{{#each years}}
-										<option value="{{year}}">{{year}}</option>
+											<option value="{{year}}">{{year}}</option>
 										{{/each}}
 									</select>
 								</div>
@@ -50,22 +50,6 @@
 								<option value="variable">Variable expense</option>
 								<option value="extra">Extra expense</option>
 								<option value="additional">Additional expense</option>
-							</select>
-						</div>
-						<div id="category-group" class="form-group hide">
-							<label for="category">Category:</label>
-							<select name="category" class="form-control">
-								<option value="housing">Housing</option>
-								<option value="transport">Transport</option>
-								<option value="health">Health</option>
-								<option value="education">Education</option>
-								<option value="taxes">Taxes</option>
-								<option value="alimentation">Alimentation</option>
-								<option value="personalCare">Personal care</option>
-								<option value="maintenance">Maintenance / Prevention</option>
-								<option value="recreation">Recreation</option>
-								<option value="clothing">Clothing</option>
-								<option value="other">Other</option>
 							</select>
 						</div>
 					</div>
