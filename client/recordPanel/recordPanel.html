@@ -18,7 +18,9 @@
       <tbody>
         {{#each records}}
           <tr>
-            <td>{{description}}</td>
+            <td>
+              {{description}}
+            </td>
             {{#each months}}
               <td class="{{activeClass}}">{{getAmount ..}}</td>
             {{/each}}

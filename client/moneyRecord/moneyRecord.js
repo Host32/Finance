@@ -16,10 +16,8 @@ Template.moneyRecord.events({
   'change select[name=type]': function(event, context) {
     if (event.target.value === 'expense') {
       $('#expense-type-group').removeClass('hide');
-      $('#category-group').removeClass('hide');
     } else {
       $('#expense-type-group').addClass('hide');
-      $('#category-group').addClass('hide');
     }
   },
   'submit form': function(event, context) {
@@ -37,10 +35,9 @@ Template.moneyRecord.events({
 
     if (record.type === 'expense') {
       record.expenseType = $('select[name=expenseType]').val();
-      record.category = $('select[name=category]').val();
     }
 
-    MoneyRecords.insert(record);
+    Meteor.call("addRecord", record);
     $('.close').click();
   }
 });
