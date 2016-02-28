@@ -26,8 +26,6 @@ Template.recordPanel.helpers({
   getBalance: function(balance){
     var month = this;
 
-    console.log(balance);
-
     var revenues = getAmount(month, balance.revenue);
     var investments = getAmount(month, balance.investment);
     var expenses = getAmount(month, balance.expense);

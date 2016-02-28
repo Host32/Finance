@@ -1,0 +1,47 @@
+<template name="tasks">
+  <div id="show-tasks-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Tasks</h4>
+        </div>
+        <div class="modal-body">
+          <form id="task-form" class="form-inline">
+            <div class="form-group">
+              <input id="task-description" type="text" class="form-control" name="description" placeholder="Description">
+            </div>
+            <div class="form-group">
+              <input id="task-deadline" type="text" class="form-control" name="deadline" placeholder="Deadline">
+            </div>
+            <button type="submit" class="btn btn-success">New</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Deadline</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each tasks}}
+                <tr>
+                  <td>{{description}}</td>
+                  <td>{{deadline}}</td>
+                  <td>
+                    <button class="removeTaskButton btn btn-danger">
+                      <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</template>
