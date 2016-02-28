@@ -2,21 +2,12 @@ Template.recordPanel.helpers({
   activeClass: function() {
     return Months.getCurrent().name === this.name && Years.getCurrent() === this.year ? 'active' : '';
   },
-  getAmount: function(record) {
+  getAmount: function(records) {
     var month = this;
-    var recordsInMonth = _.filter(record.months, function(monthRecord) {
-      return monthRecord.date.month === month.name.toLowerCase() && monthRecord.date.year === month.year;
-    });
-
-    if (!recordsInMonth.length) {
-      return moneyFormat(0);
-    }
-
-    var amount = _.reduce(recordsInMonth, function(memo, record) {
-      return memo + record.amount;
-    }, 0);
-
-    return moneyFormat(amount);
+    return moneyFormat(getAmount(month, records));
+  },
+  capitalize: function(text){
+    return text.charAt(0).toUpperCase() + text.slice(1);
   },
   months: function() {
     var current = Months.getCurrentIndex();
@@ -31,6 +22,19 @@ Template.recordPanel.helpers({
   },
   stringify: function(obj){
     return JSON.stringify(obj);
+  },
+  getBalance: function(balance){
+    var month = this;
+
+    console.log(balance);
+
+    var revenues = getAmount(month, balance.revenue);
+    var investments = getAmount(month, balance.investment);
+    var expenses = getAmount(month, balance.expense);
+
+    var total = revenues - investments - expenses;
+
+    return balanceFormat(total);
   }
 });
 
