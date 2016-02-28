@@ -22,7 +22,12 @@
               {{description}}
             </td>
             {{#each months}}
-              <td class="{{activeClass}}">{{getAmount ..}}</td>
+              <td class="{{activeClass}}">
+                {{getAmount ..}}
+                {{#if ../../editButton}}
+                  <a class="editButton" href="#" data-description="{{../description}}"><span class="glyphicon glyphicon-new-window"></span></a>
+                {{/if}}
+              </td>
             {{/each}}
           </tr>
         {{/each}}

@@ -4,5 +4,10 @@ Meteor.methods({
     obj.usuario = this.userId;
     
     MoneyRecords.insert(obj);
+  },
+  removeRecord: function (id) {
+    var usuario = this.userId;
+    
+    MoneyRecords.remove({_id: id, usuario: usuario});
   }
 });

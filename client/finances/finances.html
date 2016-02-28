@@ -1,12 +1,12 @@
 <template name="finances">
   {{> monthPagination}}
 
-  {{> recordPanel class="success" head="Revenues" records=revenues}}
-  {{> recordPanel class="info" head="Investments" records=investments}}
-  {{> recordPanel class="default" head="Fixed expenses" records=fixedExpenses}}
-  {{> recordPanel class="warning" head="Variable expenses" records=variableExpenses}}
-  {{> recordPanel class="danger" head="Extra expenses" records=extraExpenses}}
-  {{> recordPanel class="danger" head="Additional expenses" records=additionalExpenses}}
+  {{> recordPanel class="success" head="Revenues" editButton=true records=revenues}}
+  {{> recordPanel class="info" head="Investments" editButton=true records=investments}}
+  {{> recordPanel class="default" head="Fixed expenses" editButton=true records=fixedExpenses}}
+  {{> recordPanel class="warning" head="Variable expenses" editButton=true records=variableExpenses}}
+  {{> recordPanel class="danger" head="Extra expenses" editButton=true records=extraExpenses}}
+  {{> recordPanel class="danger" head="Additional expenses" editButton=true records=additionalExpenses}}
   
   <!-- panel Balance -->
   <div class="panel panel-primary">
