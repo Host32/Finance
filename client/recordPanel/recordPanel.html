@@ -1,62 +1,58 @@
 <template name="recordPanel">
-  <div class="panel panel-{{class}}">
-    <!-- Default panel contents -->
-    <div class="panel-heading">
-      {{head}}
+    <div class="panel panel-{{class}}">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            {{head}}
+        </div>
+
+        <!-- Table -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    {{#each months}}
+                    <th class="{{activeClass}}">{{name}} - {{year}}</th>
+                    {{/each}}
+                </tr>
+            </thead>
+            <tbody>
+                {{#each records}}
+                <tr>
+                    <td>
+                        {{description}}
+                    </td>
+                    {{#each months}}
+                    <td class="{{activeClass}}">
+                        {{getAmount ..}}
+                        <a class="editButton" href="#" data-description="{{../description}}"><span class="glyphicon glyphicon-new-window"></span></a>
+                    </td>
+                    {{/each}}
+                </tr>
+                {{/each}} {{#each balance}}
+                <tr>
+                    <td>
+                        {{capitalize description}}
+                    </td>
+                    {{#each months}}
+                    <td class="{{activeClass}}">
+                        {{getAmount ..}}
+                    </td>
+                    {{/each}}
+                </tr>
+                {{/each}} {{#if balance}}
+                <tr>
+                    <td>
+                        <strong>Total</strong>
+                    </td>
+                    {{#each months}}
+                    <td class="{{activeClass}}">
+                        <strong>{{{getBalance ../balance}}}</strong>
+                    </td>
+                    {{/each}}
+                </tr>
+                {{/if}}
+
+            </tbody>
+        </table>
     </div>
-    
-    <!-- Table -->
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Description</th>
-          {{#each months}}
-            <th class="{{activeClass}}">{{name}} - {{year}}</th>
-          {{/each}}
-        </tr>
-      </thead>
-      <tbody>
-        {{#each records}}
-          <tr>
-            <td>
-              {{description}}
-            </td>
-            {{#each months}}
-              <td class="{{activeClass}}">
-                {{getAmount ..}}
-                <a class="editButton" href="#" data-description="{{../description}}"><span class="glyphicon glyphicon-new-window"></span></a>
-              </td>
-            {{/each}}
-          </tr>
-        {{/each}}
-
-        {{#each balance}}
-          <tr>
-            <td>
-              {{capitalize description}}
-            </td>
-            {{#each months}}
-              <td class="{{activeClass}}">
-                {{getAmount ..}}
-              </td>
-            {{/each}}
-          </tr>
-        {{/each}}
-
-        {{#if balance}}
-          <tr>
-            <td>
-              <strong>Total</strong>
-            </td>
-            {{#each months}}
-              <td class="{{activeClass}}">
-                <strong>{{{getBalance ../balance}}}</strong>
-              </td>
-            {{/each}}
-          </tr>
-        {{/if}}
-
-      </tbody>
-    </table>
-  </div>
 </template>
