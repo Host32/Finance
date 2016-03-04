@@ -6,7 +6,7 @@
     </div>
     
     <!-- Table -->
-    <table class="table">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>Description</th>
@@ -46,11 +46,11 @@
         {{#if balance}}
           <tr>
             <td>
-              Total
+              <strong>Total</strong>
             </td>
             {{#each months}}
               <td class="{{activeClass}}">
-                {{{getBalance ../balance}}}
+                <strong>{{{getBalance ../balance}}}</strong>
               </td>
             {{/each}}
           </tr>
